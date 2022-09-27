@@ -192,7 +192,8 @@ Pseudocode adalah menuliskan algoritma dengan umumnya bahasa inggris sebelum kit
 ***Membuat Algoritma sederhana***
 
 > Menghitung luas segitiga
-Secara deskripsi dapat ditulish sebagai :
+
+Secara deskripsi dapat ditulis sebagai :
 - membuat variabel untuk sisi alas segitiga
 - membuat variabel untuk tinggi segitiga
 - membuat variabel untuk rumus luas segitiga 
