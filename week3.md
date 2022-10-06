@@ -269,6 +269,44 @@ person.forEach((item) => {
 // guddu 30 python
 ```
 
+## Modules
+---
+Module adalah file Javascript yang di dalamnya terdapat value dari objects, functions, dan variables. Kemudian file tersebut dapat diexport dan diimport oleh file lain. Yang mana file lain yang mengimportnya dapat menggunakan values yang ada di file tersebut.
+
+***Export***
+
+Export digunakan untuk meng-export variabel pada file JavaScript. Variabel yang diexport dapat berisi data seperti string, object, array, hingga function. Hal ini dilakukan agar file JavaScript tersebut dapat dijadikan sebuah module, sehingga variabel yang telah di-export dapat digunakan pada file JavaScript lain dengan menggunakan import.
+```
+let name = "Putri";
+
+let Person = {
+  nama: "Putri",
+  umur: 17,
+  alamat: "Jember",
+};
+
+function sayHello(user) {
+  console.log(`Hello, ${user}!`);
+}
+
+// Mengexport variable name, object orang dan function sayHello sekaligus
+export { name, orang, sayHello };
+```
+
+***Import*** 
+
+Import diibaratkan sebagai pasangan dari export. Jadi import digunakan untuk menggunakan variabel yang sudah di-export dari module lainnya.
+```
+import { data } from "./namaModul.js";
+
+// index.js
+import { name, person, sayHello } from "./user.js";
+
+// Menggunakan hasil import
+console.log(name); // Output: Putri
+console.log(person); // Output: {nama: "Putri", umur: 17, alamat: "Jember"}
+sayHello(person.nama); // Output: Hello, Thoriq!
+```
 
 ## Recursive
 ---
@@ -303,20 +341,15 @@ sum(4)
 10
 ```
 
-## Modules
----
-
-
-## Web Storages
----
-
-
 ## Asynchronous
 ---
 ### Introduction
 
 ### Promise 
 
+
+## Web Storages
+---
 
 
 **Copyright by Putri Dresty F @2022**
