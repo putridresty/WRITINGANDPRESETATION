@@ -340,16 +340,223 @@ sum(4)
 4 + 6 
 10
 ```
-
 ## Asynchronous
 ---
+Asynchronous mengizinkan komputer memproses task yang lain sambil menunggu proses yang masih berlangsung. Fungsi yang berjalan secara paralel dengan fungsi lain.
 ### Introduction
+Ada banyak fungsi yang digunakan oleh browser yang bisa berpotensi memakan waktu lama, dan bisa menjadi asynchronous. seperti berikut :
+- Membuat permintaan HTTP menggunakan ```fetch()```
+- Mengakses kamera atau mikrofon pengguna menggunakan ```getUserMedia()```
+- Meminta pengguna untuk memilih file menggunakan ```showOpenFilePicker()```
 
-### Promise 
+contoh dari synchronus yang berjalan lama, yang membuat pemrograman bisa dibubah ke asynchronus.
+```
+const name = 'Miriam';
+const greeting = `Hello, my name is ${name}!`;
+console.log(greeting);
+// "Hello, my name is Miriam!"
+```
+
+kode di atas mendeklarsikan :
+- string ```name```
+- string lain yang disebut ```greeting```, yang menggunakan name.
+- menampilkan ```greeting``` ke konsol JavaScript.\
+
+contoh di atas menunjukkan bahwa browser menunggu baris untuk menyelesaikan pekerjaannya sebelumnya melanjutkan ke baris berikutnya. Akan lebih efektif jika dibuat asynchronus
+```
+function makeGreeting(name) {
+  return `Hello, my name is ${name}!`;
+}
+
+const name = 'Miriam';
+const greeting = makeGreeting(name);
+console.log(greeting);
+// "Hello, my name is Miriam!"  
+---
+```
+
+```makeGreeting()``` adalah fungsi synchronus karena pemanggil fungsi tersebut dan menyelesaikan pekerjaannya dan mengembalikan nilai sebelum pemanggil dapat melanjutkan.
+Itulah yang dapat dilakukan oleh fungsi asynchronus.
+
+### Callback
+
+Callback function adalah function yang kita letakan di dalam argumen/parameter pada function, dan function tersebut akan dieksekusi setelah function pertama menyelesaikan tugasnya. Callback fungsi yang dilewatkan di dalam fungsi lain, dan kemudian dipanggil dalam fungsi itu untuk dijalankan.
+- contohnya :
+    ```
+    console.log('fired first');
+    console.log('fired second');
+
+    setTimeout(()=>{
+        console.log('fired third');
+    },2000);
+
+    console.log('fired last');
+    ```
+kode akan mengeksekusi instruksi pertama, kemudian instruksi kedua, tetapi akan melewati instruksi ketiga dan mengeksekusi instruksi terakhir.
+
+Ini ```setTimeout``` adalah fungsi JavaScript yang mengambil dua parameter. Parameter pertama adalah fungsi lain, dan yang kedua adalah waktu setelah fungsi itu harus dijalankan dalam milidetik. dan pada posisi itu callback dijalankan.
+lalu  output yang dihasilkan seperti di bawah ini :
+```
+fired first
+fired second
+fired last
+fired third
+```
+
+### Promise  
+
+Promise adalah Sebuah mekanisme baru pada fitur javascript / ES6 yang merepresentasikan sebuah object request pengolahan data yang dilakukan secara asynchronous seperti ajax, dan promise ini mewakili sebuah operasi yang belum selesai. Ini memungkinkan Anda untuk mengaitkan operasi dengan nilai keberhasilan atau alasan kegagalan asynchronus.
+
+ketika melakukan sebuah request asynchronous , maka ada 3 kemungkinan state :
+- Pending (sedang dalam proses)
+- Fulfilled ( berhasil )
+- Rejected ( dibatalkan / gagal)
+
+Promise mengambil dua fungsi sebagai parameter. Yaitu, ```resolve``` dan ```reject```.
+contoh :
+```
+const getData = (dataEndpoint) => {
+   return new Promise ((resolve, reject) => {
+     //some request to the endpoint;
+     
+     if(request is successful){
+       //do something;
+       resolve();
+     }
+     else if(there is an error){
+       reject();
+     }
+   
+   });
+};
+```
+Promise pada umumnya digunakan sebagai pengganti alternative callback. Karena disaat menggunakan callback maka kita akan ada kemungkinan dihadapkan pada callbackhell
+
+### Async - await
+
+Async - await adalah salah satu fitur baru dari javascript yang digunakan untuk menangani hasil dari sebuah Promise.
+
+- Penggunaan fungsi ```async``` :
+    ```
+    const asyncFunc = async () => {
+        const response = await fetch(resource);
+        const data = await response.json();
+    }
+    ```
+Sedangkan await berfungsi untuk menunda sebuah kode dijalankan sampai proses asynchronous berhasil. pada contoh di atas await digunakan untuk menunda penugasan sampai fungsi itu diselesaikan.
+
+### HTTP Request fetch()
+---
+```fetch()``` memulai proses pengambilan data dari server ataupun dari internet.
+```
+const URL = ('https://api.themoviedb.org/3/movie/550?api_key=65cf174fae8bc3274e79960d1c5782b6')
+const options = { 
+    method: 'POST'
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+}
+
+fetch(URL,options)
+```
+dari contoh di atas fetch memiliki 2 parameter utama yaitu URL untuk mengakses ke server, dan options untuk mendeklarasikan method yang akan digunakan
+
+lalu kita bisa gunakan untuk mengambil data dari API yang sudah kita cantumkan di URL dan method diubah menjadi ```GET```
+```
+const getDataAPI = () => {
+    const URL = ('http://example.com/movies.json')
+    const options = { 
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    }
+    
+    fetch(URL,options)
+    .then(response => response.json())
+    .then(result => result.json())
+    .catch(console.error("terdapat error"))
+}
+```
+lalu dapat menggunakan Async Await 
+```
+const getDataAPIAsyncAwait = async () => {
+    const URL = ('http://example.com/movies.json')
+    const options = { 
+        method: 'GET',
+    }
+    
+    let response = await fetch(URL, options)
+    response = await response.json()
+    console.log(response);
+}
+
+getDataAPIAsyncAwait()
+```
+mengambil data dengan async await bertujuan untuk menunda eksekusi hingga proses asynchronous selesai. 
 
 
 ## Web Storages
 ---
+Web storage adalah salah satu Web API yang dapat menyimpan data secara lokal pada sisi client. Berbeda dengan objek atau array, data yang disimpan pada objek atau array JavaScript bersifat sementara, dan akan hilang jika terjadi reload atau pergantian URL pada browser.
+
+### localStorage and sessionStorage
+Objek localStorage and sessionStorage, bagian dari API penyimpanan web, adalah dua tools untuk menyimpan key/value secara lokal
+- localStorage : data akan dipertahankan hingga pengguna menghapus cache browser secara manual atau hingga hapus data browser.
+- sessionStorage : data hanya bertahan sampai jendela atau tab ditutup.
+
+## Penggunaan localStorage  :
+
+- membuat entri untuk localStorage dengan menggunakan method ```setItem()```. method setItem()ini mengambil dua argumen, key dan value. contohnya :
+    ```
+    let key = 'Item 1';
+    localStorage.setItem(key, 'Value');
+    ```
+- dan untuk mengambil data menggunakan ```getItem()```
+    ```
+    let myItem = localStorage.getItem(key);
+    ```
+- menghapus entri dengan method removeItem(). method removeItem()ini mengambil satu argumen yang akan menjadi key di localStorage. dan yang untuk menghapus semua data yang ada di localStorage
+    ```
+    localStorage.removeItem(key);
+    ```
+    ```
+    localStorage.clear();
+    ```
+- Menyimpan nilai Non-String dengan JSON
+localStoragehanya dapat menyimpan nilai string. Jika Anda ingin menyimpan objek atau array sebagai nilai dalam localStorage, Anda dapat menggunakannya JSON.stringify()untuk mengubahnya menjadi string.
+    ```
+    let myObj = { name: 'Rafo', status: 'Students' };
+    localStorage.setItem(key, JSON.stringify(myObj));
+    ```
+
+- Memeriksa Item 
+Menggunakan if pernyataan untuk memeriksa apakah localStorage menyimpan item atau kosong. Untuk melakukan ini, periksa panjang localStorage.
+    ```
+    if (localStorage.length > 0) {
+    // ...
+    } else {
+    // ...
+    }
+    ```
+- Looping item
+Objek localStoragedan sessionStoragetidak mendukung forEachmetode ini. Untuk mengulangi item di localStorage, gunakan forloop. console.log untuk menampilkan key dan value
+    ```
+    for (let i = 0; i < localStorage.length; i++){
+    let key = localStorage.key(i);
+    let value = localStorage.getItem(key);
+    console.log(key, value);
+    }
+    ```
+- Memeriksa apakah support 
+menguji  localStorage dengan memeriksa apakah itu tersedia pada ```window``` objek menggunakan if
+    ```
+    if (window.localStorage) {
+    // localStorage supported
+    }
+    ```
 
 
 **Copyright by Putri Dresty F @2022**
