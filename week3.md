@@ -1,4 +1,4 @@
-# Writing Week 1 ( 26 - 30 September 2022)
+# Writing Week 1 ( 3 - 7 Oktober 2022)
 # Javascript Intermediate
 
 ## Array & Multidimensional Array
