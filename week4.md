@@ -184,8 +184,207 @@ properti align-items digunakan untuk mengatur align dari item child secara verti
 
 ## Boostrap
 ---
-Bostrap merupakan framework css untuk melakukan styling. 
+Bostrap merupakan framework css untuk melakukan styling. Bootstrap dapat mempermudah pembuatan web dengan memasukkan class tertentu yang disediakan oleh bootstrap. Elemen yang disediakan bootstrap juga. Bootstrap juga mempermudahkan kita untuk membuat web menjadi responsive dengan class yang disediakan. 
 
+### Cara Penggunaan Bootstrap
+- dengan memasukkan starter template CDN yang disediakan boostrap ke dalam file HTML kita
+```
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min css"  rel="stylesheet" integrity="sha384-EVSTQN3 azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
+```
+---
+Setelah memasukkan starter template yang disediakan Bootstrap maka kita dapat memakai class yang ada pada bootstrap, dengan syarat kita juga harus terhubung ke internet.
+
+### Layout Bootstrap
+- Default container 
+---
+```
+<div class="container">
+  <!-- Content here -->
+</div>
+```
+- Responsive container pada bootstrap 
+---
+responsive container memungkinkan anda menentukan kelas yang lebarnya 100% dan disesuaikan dengan ukuran mulai dari ```container-sm``` sampai ```container-xxl```
+```
+<div class="container-sm">100% wide until small breakpoint</div>
+<div class="container-md">100% wide until medium breakpoint</div>
+<div class="container-lg">100% wide until large breakpoint</div>
+<div class="container-xl">100% wide until extra large breakpoint</div>
+<div class="container-xxl">100% wide until extra extra large breakpoint</div>
+```
+- Container Fluid
+---
+container dengan lebar penuh, yang mencakup seluruh lebar viewport.
+```
+<div class="container-fluid">
+  ...
+</div>
+```
+### Grid
+Sistem grid Bootstrap terdiri dari flexbox dan ukurannya 12 kolom pada halaman. Pada 12 kolom itu juga bisa dibagi beberapa kolom sesuai dengan kebutuhan.
+- contoh grid dengan pembagian kolom
+```
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      Column
+    </div>
+    <div class="col">
+      Column
+    </div>
+    <div class="col">
+      Column
+    </div>
+  </div>
+</div>
+```
+syntax di atas menunjukkan flexbox yang dibagi menjadi 3 kolom dengan berukuran yang sama,
+
+### Content 
+content pada bootstrap disini saya mengambil contoh tabel yang biasanya digunakan
+- Table
+---
+Basic table merupakan tabel sederhana yang ada di bootstrap. Agar dapat menggunakan jenis tabel ini kita dapat menggunakan class table pada bootstrap. tabel pada bootstrap juga sudah mendukung responsive desain agar tampilan tabel dapat lebih baik saat diakses diberbagai jenis perangkat.
+```
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+```
+- Variant tabel
+---
+ada beberapa variant tabel yang ada pada bootstrap dan bisa digunakan dengan cara memasukkan class warna seperty ```primary``` untuk warna biru ```success``` untuk warna hijau, ```danger``` , dan lain-lain.
+![Variant Tabel](https://www.tutorialrepublic.com/lib/images/bootstrap-5/bootstrap-table-with-accented-rows.png)
+
+#### Component 
+componen dalam bootstrap merupakan bagaian yang penting untuk membuat website dengan fitur-fitur tertentu, contoh penggunaan beberapa component :
+---
+- Membuat Navbar
+- Menggunakan Card
+- Membuat Form
+- Membuat Button
+---
+- Navbar 
+```
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+```
+membuat navbar pada bootstrap dengan menambahkan tag ```<nav>```, juga bisa ditambahkan style background-colour seperti ```bg-dark```, ```bg-primary```, ```bg-light```. 
+
+- Card 
+---
+Card merupakan salah satu component yang bisa memuat thumbnail, tittle, deskripsi, dan bisa ditambahkan button di dalam card.
+```
+<div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+```
+
+- Form
+---
+Sesuai namanya form adalah salah satu component yang berguna untuk pengisian sebuah data
+```
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>
+```
+
+![form](https://media.geeksforgeeks.org/wp-content/uploads/20201229155434/displayFormControls.png)
+
+- Button 
+---
+Bootstrap mempunyai style pada button yang telah ditentukan, masing-masing punya tujuan semantiknya sendiri, dengan beberapa tambahan untuk kontrol lebih. itu juga bisa ditunjukkan dengan menambahkan class untuk memberikan style warnanya. untuk menambahkan button bisa menggunakan tag ```<button>```.
+```
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
+<button type="button" class="btn btn-link">Link</button>
+```
 
 **Copyright by Putri Dresty F @2022**
 
