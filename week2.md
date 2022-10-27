@@ -1,4 +1,4 @@
-# Writing Week 1 ( 26 - 30 September 2022)
+# Writing Week 2 ( 26 - 30 September 2022)
 
 ## Jawacript Scope and Function
 ---
