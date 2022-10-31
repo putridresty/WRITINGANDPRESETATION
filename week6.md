@@ -1,10 +1,6 @@
 # Writing Week 5 ( 24 - 28 Oktober 2022)
-
-
 ## React Javascript
 ---
-
-
 ### Intro to React.js, Virtual DOM, and JSX
 React adalah library atau framework yview library Javascript untuk membuat tampilan (user Interface) pada website. Keuntungan menggunakan react :
 - React dapat mempercepat pembuatan suatu aplikasi front-end
@@ -171,10 +167,24 @@ Styling pada React JS
      ```
 
 ### Handling Events
+Handling atau penanganan event pada elemen React mirip dengan event yang ada pada Javascript, namun dengan beberapa perbedaan yaitu:
 
+- Penamaan event pada React menggunakan camelCase, tidak lagi lowercase
+- Event handler diisi dengan nama fungsi saja, tidak perlu pemanggilan fungsi.
+```
+import React from "react"
 
-### Conditional Rendering
-
+export default function App() {
+  function clickButton() {
+    alert("Tombol telah diklik")
+  }
+  return (
+    <div className='App'>
+      <button onClick={clickButton}>Click Me</button>
+    </div>
+  )
+}
+```
 
 ### Lifecycle Method
 Lifecycle adalah siklus hidup pada React js
