@@ -1,4 +1,4 @@
-# Writing Week 5 ( 24 - 28 Oktober 2022)
+# Writing Week 6 ( 24 - 28 Oktober 2022)
 ## React Javascript
 ---
 ### Intro to React.js, Virtual DOM, and JSX
