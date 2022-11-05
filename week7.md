@@ -403,7 +403,45 @@ Set-up serta langkah menggunakan redux :
 
   ```
 
-### **Redux Thunk**
+### **Redux Thunk Middleware**
 ---
+Thunk digunakan untuk menunda pekerjaan pengambilan data secara asynchronous,sedangkan pada action (dispatcht) data harus dikirimkan secara langsung tanpa ada jeda (synchronous) untuk menununggu data yang diambil dari API.
+
+Sebelum menggunakan thunk kita harus menginstallnay dahulu kedalam project kita deangan perintah :
+> npm install thunk 
+
+Lalu import kedalam file store
+```
+  import { createStore, applyMiddleware } from 'redux'
+  import thunk from 'redux-thunk'
+  import rootReducer from './reducers/index'
+
+  const store = createStore(rootReducer, applyMiddleware(thunk))
+```
+
+Setelah itu thunk dapat digunakan seperti kode dibaawah ini, dapat menyesuaikan dengan kebutuhan 
+```
+  import { configureStore } from '@reduxjs/toolkit'
+  import rootReducer from './reducer'
+  import { myCustomApiService } from './api'
+
+  const store = configureStore({
+    reducer: rootReducer,
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware({
+        thunk: {
+          extraArgument: myCustomApiService
+        }
+      })
+  })
+
+  // later
+  function fetchUser(id) {
+    // The `extraArgument` is the third arg for thunk functions
+    return (dispatch, getState, api) => {
+      // you can use api here
+    }
+}
+```
 
 **Copyright by Putri Dresty F @2022**
