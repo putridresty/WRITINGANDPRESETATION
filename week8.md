@@ -1,6 +1,4 @@
-#+
-
- Writing Week 8 ( 7 - 9 November 2022)
+# Writing Week 8 ( 7 - 9 November 2022)
 ## React Javascript
 ---
 
@@ -45,6 +43,7 @@ function KeranjangCountProvider({children}) {
 export default KeranjangCountProvider
 ```
 Cara memanggil data untuk digunakan pada component lain yaitu menggunakan ***useContext***.
+
 
 ## Testing
 ---
